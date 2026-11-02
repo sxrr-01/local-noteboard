@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noteboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="header-text">
+      <h1>Noteboard</h1>
+      <p class="lead">Anonym Fragen stellen</p>
+    </div>
+    <div class="header-actions">
+      <button type="button" id="admin-login-btn" class="quiet small">Admin</button>
+      <button type="button" id="select-btn" class="quiet small" hidden>Auswählen</button>
+      <button type="button" id="logout-btn" class="quiet small" hidden>Ausloggen</button>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="visually-hidden">All note</h2>
+    <p id="empty" class="empty" hidden>Noch keine Fragen. Nutze das + um eine zu Posten.</p>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <button type="button" id="compose-btn" class="fab" aria-label="New note" title="New note">+</button>
+
+  <div id="grid-bar" class="selection-bar" hidden>
+    <span class="sel-count" data-count>0 ausgewählt</span>
+    <button type="button" class="quiet" data-act="pin">Anpinnen</button>
+    <button type="button" class="danger" data-act="delete">Löschen</button>
+    <button type="button" class="quiet" data-act="done">Fertig</button>
+  </div>
+
+  <dialog id="composer" class="small" aria-labelledby="composer-title">
+    <div class="sheet">
+      <h2 id="composer-title">Neue Frage</h2>
+      <form id="note-form" autocomplete="off">
+        <label for="note-title">Titel</label>
+        <input id="note-title" name="title" type="text" maxlength="120" required>
+
+        <label for="note-content">Frage</label>
+        <textarea id="note-content" name="content" rows="5" maxlength="5000" required></textarea>
+
+        <div class="form-row">
+          <button type="submit" class="primary">Posten</button>
+          <button type="button" id="composer-cancel" class="quiet">Abbrechen</button>
+          <p id="note-status" class="status" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="login" class="small" aria-labelledby="login-title">
+    <div class="sheet">
+      <h2 id="login-title">Admin Login</h2>
+      <form id="login-form">
+        <label for="login-password">Passwort</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+
+        <div class="form-row">
+          <button type="submit" class="primary">Einloggen</button>
+          <button type="button" id="login-cancel" class="quiet">Abbrechen</button>
+          <p id="login-status" class="status" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer-bar">
+      <button type="button" id="viewer-close" class="quiet">Schließen</button>
+    </div>
+
+    <article class="viewer-body">
+      <h2 id="viewer-title"></h2>
+
+      <div id="viewer-note" class="block note-block"></div>
+
+      <h3 id="replies-heading">Antworten</h3>
+      <ol id="viewer-replies" class="replies"></ol>
+
+      <form id="reply-form" autocomplete="off">
+        <label for="reply-content">Deine Antwort</label>
+        <textarea id="reply-content" name="content" rows="3" maxlength="3000" required></textarea>
+        <div class="form-row">
+          <button type="submit" class="primary">Antwort Posten</button>
+          <p id="reply-status" class="status" role="status"></p>
+        </div>
+      </form>
+    </article>
+
+    <div id="viewer-bar-admin" class="selection-bar in-dialog" hidden>
+      <span class="sel-count" data-count>0 ausgewählt</span>
+      <button type="button" class="quiet" data-act="pin">Pin</button>
+      <button type="button" class="danger" data-act="delete">Delete</button>
+      <button type="button" class="quiet" data-act="clear">Clear</button>
+    </div>
+  </dialog>
+  <Footer class="footer">Hinweis: Aus Sicherheitsgründen wird eine IP-basierte Spam-Sperre verwendet. Die Anonymität wird dadurch nicht eingeschränkt</Footer>
+  <script src="/app.js"></script>
+</body>
+</html>

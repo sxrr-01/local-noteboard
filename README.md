@@ -10,3 +10,4 @@ Run app.py to start the webserver. local-noteboard will be hosted on port 3000
 
 Feel Free to do whatever you want with this Code
 
+P.S: i am planning to overhaul the entire thing in the future to slowly clean up some of the vibecoded slop

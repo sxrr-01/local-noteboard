@@ -1,7 +1,7 @@
 # local-noteboard
 
 # What is local-noteboard?
-local-noteboard is a simple, (vibecoded) web-based note taking platform, intended for use in trusted local environments.
+local-noteboard is a simple, (partially vibecoded) web-based note taking platform, intended for use in trusted local environments.
 
 ## How to Use
 Run app.py to start the webserver. local-noteboard will be hosted on port 3000
